@@ -14,10 +14,11 @@
         }
 
         public function add(){
-            $this->show_add_item();  
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $this->show_add_item();
+            }
+              
         }
-
-      
 
         private function show_add_item(){
             $view = new View("addItemListView.php");
@@ -32,9 +33,12 @@
 
         private function show_items($id_user){ 
             //question 2
+                $view = new View("itemListForUserView.php");
+                //var_dump($id_user);
+                $data = array("id_user"=>$id_user);
+                $content = $view->render($data);
+                echo $this->render_template_with_content(self::ADD_ITEM_PAGE_TITLE, $content);
             
         }
-
     }
-
 ?>

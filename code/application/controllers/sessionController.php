@@ -3,9 +3,15 @@
     
     class SessionController extends Controller{
         const SESSION_PAGE_TITLE = "Les sessions et cookies";
+
+        public function __construct(){
+            session_start();
+            $_SESSION["OptionsValeur"] = "desactiver";
+        }
+
         public function add(){
             //question 3
-            
+            $_SESSION["OptionsValeur"] = "activé";
         }
 
         public function show(){
